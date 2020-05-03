@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import React, { useCallback } from 'react' 
-import Map from './Map.js'
+import { useCallback } from 'react' 
+import Map from '../map/Map.js'
 
 const MemoMap = useCallback(<Map />, []) 
 

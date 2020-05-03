@@ -1,14 +1,12 @@
 import { functions, isEqual, omit } from 'lodash'
-import React, { useState, useEffect, useRef } from 'react'
+import React from "react";
 
 function Map({ options, onMount, className, onMountProps }) {
   const ref = useRef()
   const [map, setMap] = useState()
 
   useEffect(() => {
-    // The Google Maps API modifies the options object passed to
-    // the Map constructor in place by adding a mapTypeId with default
-    // value 'roadmap'. { ...options } prevents this by creating a copy.
+
     const onLoad = () =>
       setMap(new window.google.maps.Map(ref.current, { ...options }))
     if (!window.google) {
@@ -26,7 +24,7 @@ function Map({ options, onMount, className, onMountProps }) {
 
   return (
     <div
-      style={{ height: `60vh`, margin: `1em 0`, borderRadius: `0.5em` }}
+      style={{ height: `80vh`, margin: `1em 0`, borderRadius: `0.5em` }}
       {...{ ref, className }}
     />
   )
@@ -45,7 +43,7 @@ export default React.memo(Map, shouldNotUpdate)
 
 Map.defaultProps = {
   options: {
-    center: { lat: 48, lng: 8 },
+    center: { lat: ref.lat, lng: ref.lng },
     zoom: 5,
   },
 }
